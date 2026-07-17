@@ -1,0 +1,771 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Solutions for Modern Business</title>
+
+    <link rel="stylesheet"
+          href="{% static 'website/css/style.css' %}">
+</head>
+
+<body>
+
+<!-- ==================== NAVBAR ==================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Modern<span>Business</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#solver">Problem Solver</a>
+        <a href="#analyzer">Profit Analyzer</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+</nav>
+
+
+<!-- ==================== HERO ==================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <p class="hero-label">
+            SMART SOLUTIONS FOR MODERN BUSINESSES
+        </p>
+
+        <h1>
+            Transform Your Business With
+            <span>Smart Solutions</span>
+        </h1>
+
+        <p class="hero-text">
+            Discover solutions for business problems,
+            get practical growth tips, analyze your profits
+            and make smarter business decisions.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#solver"
+               class="primary-btn">
+                Solve My Business Problem
+            </a>
+
+            <a href="#analyzer"
+               class="secondary-btn">
+                Analyze My Profit
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================== STATISTICS ==================== -->
+
+<section class="stats">
+
+    <div class="stat-card">
+        <h2>Smart</h2>
+        <p>Business Solutions</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>24/7</h2>
+        <p>Problem Analysis</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>Fast</h2>
+        <p>Financial Analysis</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>Data</h2>
+        <p>Driven Insights</p>
+    </div>
+
+</section>
+
+
+<!-- ==================== SERVICES ==================== -->
+
+<section class="section" id="services">
+
+    <div class="section-heading">
+
+        <span>OUR BUSINESS SERVICES</span>
+
+        <h2>
+            Solutions Designed for Business Growth
+        </h2>
+
+        <p>
+            Choose modern technology and business solutions
+            designed to improve productivity and growth.
+        </p>
+
+    </div>
+
+
+    <div class="service-grid">
+
+        <div class="service-card">
+
+            <div class="service-icon">💻</div>
+
+            <h3>Digital Transformation</h3>
+
+            <p>
+                Digitize business processes, automate
+                repetitive operations and improve
+                overall productivity.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">☁️</div>
+
+            <h3>Cloud Solutions</h3>
+
+            <p>
+                Build scalable and secure cloud
+                infrastructure for modern businesses.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">📊</div>
+
+            <h3>Data Analytics</h3>
+
+            <p>
+                Transform business data into valuable
+                insights for better decision-making.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">🤖</div>
+
+            <h3>AI Solutions</h3>
+
+            <p>
+                Use intelligent automation and modern
+                AI solutions to improve business operations.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================== BUSINESS PROBLEM SOLVER ==================== -->
+
+<section class="tool-section" id="solver">
+
+    <div class="section-heading">
+
+        <span>SMART BUSINESS ASSISTANT</span>
+
+        <h2>Business Problem Solver</h2>
+
+        <p>
+            Enter your business question and receive
+            recommended solutions and practical tips.
+        </p>
+
+    </div>
+
+
+    <div class="tool-container">
+
+
+        <!-- LEFT INFORMATION -->
+
+        <div class="tool-information">
+
+            <div class="tool-icon">
+                💡
+            </div>
+
+            <h2>
+                Find Solutions for Your Business
+            </h2>
+
+            <p>
+                Describe the challenge your business is facing.
+                Our system will analyze your question and provide
+                useful recommendations.
+            </p>
+
+
+            <div class="example-questions">
+
+                <h4>Example Questions</h4>
+
+                <p>
+                    ✓ How can I increase my business profits?
+                </p>
+
+                <p>
+                    ✓ How can I attract more customers?
+                </p>
+
+                <p>
+                    ✓ How can I increase my sales?
+                </p>
+
+                <p>
+                    ✓ How can I reduce business expenses?
+                </p>
+
+                <p>
+                    ✓ How can I improve my marketing?
+                </p>
+
+                <p>
+                    ✓ How can technology improve my business?
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROBLEM SOLVER FORM -->
+
+        <div class="tool-form">
+
+            <form method="POST"
+                  action="#solver">
+
+                {% csrf_token %}
+
+                <input type="hidden"
+                       name="form_type"
+                       value="solver">
+
+
+                <label>
+                    Enter Your Business Question
+                </label>
+
+
+                <textarea
+                    name="question"
+                    placeholder="Example: My business sales are decreasing. How can I increase my customers and profits?"
+                    required>{{ question|default:"" }}</textarea>
+
+
+                <button type="submit"
+                        class="submit-btn">
+
+                    Get Solution & Tips
+
+                </button>
+
+            </form>
+
+
+            <!-- DISPLAY SOLUTION -->
+
+            {% if solution %}
+
+            <div class="solution-result">
+
+                <div class="result-title">
+
+                    <span>💡</span>
+
+                    <h3>
+                        Recommended Solution
+                    </h3>
+
+                </div>
+
+
+                <p class="solution-text">
+
+                    {{ solution }}
+
+                </p>
+
+
+                {% if tips %}
+
+                <div class="tips">
+
+                    <h3>
+                        Actionable Business Tips
+                    </h3>
+
+                    <ul>
+
+                        {% for tip in tips %}
+
+                        <li>
+
+                            <span>✓</span>
+
+                            {{ tip }}
+
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+                {% endif %}
+
+
+                {% if question %}
+
+                <div class="question-summary">
+
+                    <strong>
+                        Your Question:
+                    </strong>
+
+                    {{ question }}
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================== PROFIT ANALYZER ==================== -->
+
+<section class="section analyzer-section"
+         id="analyzer">
+
+    <div class="section-heading">
+
+        <span>FINANCIAL BUSINESS TOOL</span>
+
+        <h2>Business Profit Analyzer</h2>
+
+        <p>
+            Enter your monthly revenue and expenses
+            to calculate profit, loss and profit margin.
+        </p>
+
+    </div>
+
+
+    <div class="analyzer-container">
+
+
+        <!-- CALCULATOR -->
+
+        <div class="calculator-card">
+
+            <h3>
+                Enter Financial Details
+            </h3>
+
+
+            <form method="POST"
+                  action="#analyzer">
+
+                {% csrf_token %}
+
+                <input type="hidden"
+                       name="form_type"
+                       value="calculator">
+
+
+                <div class="input-group">
+
+                    <label>
+                        Monthly Revenue (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        name="revenue"
+                        step="0.01"
+                        min="0"
+                        placeholder="Example: 100000"
+                        required>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Monthly Expenses (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        name="expenses"
+                        step="0.01"
+                        min="0"
+                        placeholder="Example: 60000"
+                        required>
+
+                </div>
+
+
+                <button type="submit"
+                        class="submit-btn">
+
+                    Calculate & Analyze Profit
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- FINANCIAL RESULTS -->
+
+        {% if profit is not None %}
+
+        <div class="analysis-result">
+
+            <h3>
+                Your Business Financial Report
+            </h3>
+
+
+            <div class="financial-cards">
+
+                <div class="financial-card">
+
+                    <p>Monthly Revenue</p>
+
+                    <h3>
+                        ₹{{ revenue|floatformat:2 }}
+                    </h3>
+
+                </div>
+
+
+                <div class="financial-card">
+
+                    <p>Monthly Expenses</p>
+
+                    <h3>
+                        ₹{{ expenses|floatformat:2 }}
+                    </h3>
+
+                </div>
+
+
+                <div class="financial-card">
+
+                    <p>Net Profit / Loss</p>
+
+                    <h3>
+                        ₹{{ profit|floatformat:2 }}
+                    </h3>
+
+                </div>
+
+
+                <div class="financial-card">
+
+                    <p>Profit Margin</p>
+
+                    <h3>
+                        {{ margin }}%
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <!-- GRAPH -->
+
+            <div class="chart-container">
+
+                <h3>
+                    Revenue, Expenses & Profit Graph
+                </h3>
+
+                <canvas id="profitChart"></canvas>
+
+            </div>
+
+
+            <!-- AUTOMATIC RECOMMENDATION -->
+
+            <div class="financial-advice">
+
+                <h3>
+                    💡 Financial Recommendation
+                </h3>
+
+
+                {% if profit > 0 %}
+
+                <p>
+                    Your business is currently profitable.
+                    Consider reinvesting part of your profits
+                    into marketing, technology, customer
+                    acquisition and business expansion.
+                </p>
+
+
+                {% elif profit == 0 %}
+
+                <p>
+                    Your business is currently at the
+                    break-even point. Try to increase sales
+                    and reduce unnecessary expenses to
+                    improve your profit margin.
+                </p>
+
+
+                {% else %}
+
+                <p>
+                    Your business is currently operating at
+                    a loss. Review unnecessary expenses,
+                    improve your pricing strategy and focus
+                    on increasing profitable sales.
+                </p>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<!-- ==================== BUSINESS GROWTH TIPS ==================== -->
+
+<section class="section" id="growth">
+
+    <div class="section-heading">
+
+        <span>BUSINESS GROWTH</span>
+
+        <h2>Essential Tips for Business Success</h2>
+
+        <p>
+            Important strategies that can help modern
+            businesses improve performance and growth.
+        </p>
+
+    </div>
+
+
+    <div class="service-grid">
+
+        <div class="service-card">
+
+            <div class="service-icon">🎯</div>
+
+            <h3>Know Your Customers</h3>
+
+            <p>
+                Understand customer needs and use feedback
+                to continuously improve your products
+                and services.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">📈</div>
+
+            <h3>Track Performance</h3>
+
+            <p>
+                Monitor revenue, expenses, profits and
+                important business performance indicators.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">📢</div>
+
+            <h3>Improve Marketing</h3>
+
+            <p>
+                Use digital marketing and targeted
+                campaigns to reach the right customers.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">⚙️</div>
+
+            <h3>Automate Operations</h3>
+
+            <p>
+                Use technology to automate repetitive
+                tasks and improve business efficiency.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================== ABOUT ==================== -->
+
+<section class="about-section"
+         id="about">
+
+    <div class="about-content">
+
+        <span>
+            ABOUT THE PLATFORM
+        </span>
+
+        <h2>
+            Smarter Decisions for Modern Businesses
+        </h2>
+
+        <p>
+            Solutions for Modern Business helps business
+            owners identify problems, receive practical
+            recommendations, analyze financial performance
+            and make better data-driven decisions.
+        </p>
+
+
+        <div class="about-points">
+
+            <p>
+                ✓ Business Problem Analysis
+            </p>
+
+            <p>
+                ✓ Solutions and Actionable Tips
+            </p>
+
+            <p>
+                ✓ Revenue and Expense Analysis
+            </p>
+
+            <p>
+                ✓ Profit Margin Calculation
+            </p>
+
+            <p>
+                ✓ Business Financial Graphs
+            </p>
+
+            <p>
+                ✓ Digital Business Solutions
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================== CONTACT ==================== -->
+
+<section class="contact-section"
+         id="contact">
+
+    <div class="section-heading">
+
+        <span>CONTACT & ENQUIRY</span>
+
+        <h2>
+            Let's Build Something Great
+        </h2>
+
+        <p>
+            Tell us about your business requirements
+            and select the solution you need.
+        </p>
+
+    </div>
+
+
+    <!-- DJANGO MESSAGES -->
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+        <div class="message-box">
+
+            {{ message }}
+
+        </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    <div class="contact-container">
+
+
+        <div class="contact-info">
+
+            <h2>
+                Transform Your Business
+            </h2>
+
+            <p>
+                Submit your business requirements
